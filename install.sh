@@ -65,18 +65,16 @@ check_if_80_443_occupied(){
 }
 
 check_assign_var_domain(){
-	while true; do
 		if [ -z $domain ]; then
-			read -p "Input the domain(pointing to the Ipv4 addr of current VPS):" domain
+			echo "Please modify the domain name"
+			exit 1
 		fi
 		if check_if_domain_pointed_to_localhost $domain; then
 			echo_green "Domain check pass"
-			break;
 		else
-			echo_red "Illegal domain: [$domain], maybe DNS resolution is not pointing to current VPS, or DNS resolution hasn't came to effect"
-			domain=
+			echo_red "Illegal domain: [$domain], maybe DNS resolution is not pointing to current VPS, or DNS resolution hasn't came to effect, wait a few mins later to try again"
+			exit 1
 		fi
-	done
 }
 
 check_if_domain_pointed_to_localhost(){
@@ -92,19 +90,17 @@ check_if_domain_pointed_to_localhost(){
 
 
 check_if_default_passwd_available(){
-	while true; do
 		if [ -z $default_passwd ]; then
-			read -p "Please input password(only consisit of Letters and Numbers):" default_passwd
+			echo_red "Please modify password(only consisit of Letters and Numbers):"
+			exit 1
 		fi
 
 		if echo $default_passwd | egrep "^[[:alnum:]]+$" &> /dev/null; then	
 			echo_green "Password Set"
-			break;
 		else
 			echo_red "Illegal password"
-			default_passwd=
+			exit 1
 		fi
-	done
 }
 
 check_if_alnum(){

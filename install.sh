@@ -8,6 +8,7 @@ default_passwd=
 #url to fake website template, git repository url required
 web_template=https://github.com/nickjchn/a_third_party_static_web_template
 
+shell_param=$1
 apps_to_be_installed="trojan apache2 tar git certbot"  #apps to be installed in【Install trojan】
 apps_to_be_removed="trojan apache2 git certbot" #apps to be removed in【Delete trojan】
 trojan_keys_dir="/etc/trojan/trojan-keys/"	#location where public and private key lay
@@ -278,7 +279,7 @@ echo_main_menu_and_take_user_choice(){
 }
 
 main(){
-	if [ $1 = "--update-cert" ]; then
+	if [ "$shell_param" = "--update-cert" ]; then
     	echo "Updating certs...."
 		delete_cert
 		install_cert

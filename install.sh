@@ -278,6 +278,11 @@ echo_main_menu_and_take_user_choice(){
 }
 
 main(){
+	if [ "$1" = "--update-cert" ]; then
+    	echo "Updating certs...."
+		delete_cert
+		install_cert
+	fi
 	echo_head_warning
 	echo_main_menu_and_take_user_choice
 }

@@ -278,7 +278,7 @@ echo_main_menu_and_take_user_choice(){
 }
 
 main(){
-	if [ "$1" = "--update-cert" ]; then
+	if [ $1 = "--update-cert" ]; then
     	echo "Updating certs...."
 		delete_cert
 		install_cert

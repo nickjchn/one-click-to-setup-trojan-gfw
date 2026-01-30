@@ -12,7 +12,11 @@ ubuntu 20.04+ and debian 10.8+
 2. 443 port accessible from public network
 
 ## How to run：
-`sudo bash install.sh`
+1. open the `install.sh`, modify the `domain` and the `password` param, save it.
+2. `sudo bash install.sh` and choose the menu
+
+## Update cert:
+`sudo bash install.sh --update-cert`
 
 
 

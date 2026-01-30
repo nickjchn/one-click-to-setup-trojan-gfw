@@ -282,8 +282,9 @@ main(){
     	echo "Updating certs...."
 		delete_cert
 		install_cert
+	else
+		echo_head_warning
+		echo_main_menu_and_take_user_choice
 	fi
-	echo_head_warning
-	echo_main_menu_and_take_user_choice
 }
 main
